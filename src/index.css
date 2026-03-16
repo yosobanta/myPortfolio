@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Quote Carousel gradient animation ── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 50% 100%; }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 0%; }
+  100% { background-position: 0% 50%; }
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-mercury-100 font-sans antialiased overflow-x-hidden;
+    /* We will use a custom cursor, but keeping default until it's built */
+    cursor: default; 
+  }
+  
+  body::-webkit-scrollbar { 
+    display: none !important; 
+  }
+  body {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+  }
+
+  /* Custom Selection */
+  ::selection {
+    @apply bg-mercury-700 text-white;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+
+  .text-gradient-mercury {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-mercury-100 via-mercury-300 to-mercury-600;
+  }
+
+  .mercury-glow {
+    box-shadow: 0 0 30px 5px rgba(181, 196, 216, 0.15), inset 0 0 15px rgba(181, 196, 216, 0.2);
+  }
+  
+  .crt::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 50;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}
