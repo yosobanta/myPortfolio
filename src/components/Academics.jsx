@@ -50,7 +50,7 @@ const trainingEntries = [
     orgLink: 'https://theangaarbatch.in',
     duration: '6-7 Weeks',
     status: 'COMPLETED',
-    certificateUrl: '#',
+    certificateUrl: import.meta.env.VITE_CERT_DRIVE_MERN_GENAI,
     highlights: [
       'MongoDB & Mongoose',
       'Express.js & REST APIs',
@@ -399,10 +399,10 @@ export default function Academics({ forceExpandAll = false }) {
       <div className="max-w-5xl mx-auto">
         {/* Section heading */}
         <div className="mb-20">
-          <h2 className="text-sm font-mono text-mercury-500 uppercase tracking-[0.3em] mb-4">Education Vault</h2>
+          <h2 className="text-sm font-mono text-mercury-500 uppercase tracking-[0.3em] mb-4">Education</h2>
           <h3 className="text-5xl md:text-7xl font-bold text-mercury-200">
-            Knowledge <br />
-            <span className="text-mercury-600 font-light">Vault.</span>
+            Learning <br />
+            <span className="text-mercury-600 font-light">Ledger.</span>
           </h3>
         </div>
 

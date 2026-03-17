@@ -7,6 +7,10 @@ const quotes = [
     author: '— Steve Jobs',
   },
   {
+    text: '"Get busy living, or get busy dying."',
+    author: '— Shawshank Redemption',
+  },
+  {
     text: '"Code is like humor. When you have to explain it, it\'s bad."',
     author: '— Cory House',
   },

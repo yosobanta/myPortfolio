@@ -25,8 +25,8 @@ const GmailIcon = () => (
 );
 
 const socials = [
-  { icon: <InstagramIcon />, label: 'Instagram', url: '#', glowColor: '#E1306C' },
-  { icon: <FacebookIcon />, label: 'Facebook', url: '#', glowColor: '#4267B2' },
+  { icon: <InstagramIcon />, label: 'Instagram', url: 'https://www.instagram.com/offbeat_yash/', glowColor: '#E1306C' },
+  { icon: <FacebookIcon />, label: 'Facebook', url: 'https://www.facebook.com/jasbant.patra.9/', glowColor: '#4267B2' },
   { icon: <GmailIcon />, label: 'Gmail', url: 'mailto:your@email.com', glowColor: '#EA4335' },
 ];
 

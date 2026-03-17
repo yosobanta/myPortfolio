@@ -16,7 +16,7 @@ const certifications = [
     name: 'Introduction to Hardware and Operating Systems',
     provider: 'IBM',
     providerImage: '/subskills/ibm_logo.png',
-    verifyUrl: '#',
+    verifyUrl: 'https://www.coursera.org/account/accomplishments/certificate/ZE92WVN4BDA1',
     color: '#4285F4'
   },
   {

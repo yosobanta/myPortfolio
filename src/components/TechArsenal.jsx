@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import {
+  
   SiCplusplus, SiC, SiKotlin, SiPython, SiReact, SiNodedotjs,
   SiTailwindcss, SiDocker, SiKubernetes, SiMongodb, SiFirebase, SiNextdotjs,
-  SiJavascript, SiTypescript, SiGo, SiSpring, SiPostgresql, SiRedis, SiMui, SiGraphql,
+  SiJavascript, SiTypescript, SiGo, SiRender, SiSpring, SiPostgresql, SiRedis, SiMui, SiGraphql,
   SiFigma, SiGithub, SiLinux, SiGit
 } from "react-icons/si";
-import { FaJava, FaAws } from "react-icons/fa";
+import { FaJava, FaAws , FaAndroid ,FaHtml5 }  from "react-icons/fa";
+
+import { IoLogoVercel } from "react-icons/io5";
 
 const categories = [
   {
@@ -29,9 +32,9 @@ const categories = [
       { name: "React", icon: <SiReact />, color: "#61DAFB" },
       { name: "Next.js", icon: <SiNextdotjs />, color: "#ffffff" },
       { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4" },
-      { name: "MUI", icon: <SiMui />, color: "#007FFF" },
+      { name: "HTML", icon: <FaHtml5 />, color: "#007FFF" },
       { name: "Figma", icon: <SiFigma />, color: "#F24E1E" },
-      { name: "GraphQL", icon: <SiGraphql />, color: "#E10098" }
+      // { name: "GraphQL", icon: <SiGraphql />, color: "#E10098" }
     ] // 6 icons: Pyramid (1, 2, 3)
   },
   {
@@ -49,9 +52,9 @@ const categories = [
     title: "DevOps & Tools",
     skills: [
       { name: "Docker", icon: <SiDocker />, color: "#2496ED" },
-      { name: "K8s", icon: <SiKubernetes />, color: "#326ce5" },
-      { name: "AWS", icon: <FaAws />, color: "#FF9900" },
-      { name: "Redis", icon: <SiRedis />, color: "#DC382D" },
+      { name: "Render", icon: <SiRender/>, color: "#326ce5" },
+      { name: "Vercel", icon: <IoLogoVercel />, color: "#FF9900" },
+      { name: "Android", icon: <FaAndroid/>, color: "#44dc2d" },
       { name: "Git", icon: <SiGit />, color: "#F05032" },
       { name: "GitHub", icon: <SiGithub />, color: "#ffffff" }
     ] // 6 icons: Pyramid (1, 2, 3)
