@@ -1,6 +1,11 @@
 import React from 'react';
 import CommandCenterProject from './CommandCenterProject';
 
+import medivaultVideo from '../assets/medivault.mp4';
+import lastMileVideo from '../assets/Last_mile_delivery.mp4';
+import osVideo from '../assets/OS.mp4';
+import portfolioVideo from '../assets/portfolio.mp4';
+
 const vaultProjects = [
 
   {
@@ -10,6 +15,7 @@ const vaultProjects = [
     themeColor: '#60a5fa', // blue
     liveUrl: 'https://medi-vault-ten.vercel.app/',
     sourceUrl: 'https://github.com/SweetyBiju/MediVault.git',
+    video: medivaultVideo,
     sections: {
       context: 'Medical records are often scattered across hospitals, labs, and personal storage systems, making it difficult for patients to securely manage and share their health data with doctors when required. Patients need a centralized platform that enables secure document storage, controlled access sharing, and intelligent insights from their health records.',
       architecture: 'Developed using the MERN stack with React and Tailwind for the frontend and Node.js/Express with MongoDB for the backend. The system implements role-based authentication, secure document upload, OTP-based document sharing with expiry, and AI-powered health insights. Documents are stored with metadata indexing, and the dashboard provides real-time record tracking, appointment management, and doctor communication.',
@@ -32,6 +38,7 @@ const vaultProjects = [
     themeColor: '#34d399', // green
     liveUrl: '#',
     sourceUrl: 'https://github.com/GopalVashishta/Route-Optimization-for-E-Commerce-ML.git',
+    video: lastMileVideo,
     sections: {
       context: 'Last-mile delivery accounts for the most expensive segment of the logistics chain due to inefficient route planning, traffic variability, and dynamic delivery requests. Logistics companies require intelligent systems that can predict optimal routes and delivery sequences in real time to reduce fuel cost and delivery delays.',
       architecture: 'Built a machine learning pipeline that analyzes historical delivery data, traffic conditions, and order clusters to generate optimized delivery routes. The system combines clustering algorithms for delivery grouping and a heuristic optimization approach inspired by the Traveling Salesman Problem to minimize travel distance and time.',
@@ -39,10 +46,10 @@ const vaultProjects = [
       stack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Jupyter Notebook'],
       metrics: [
         { value: '18%', label: 'Distance Reduction' },
-        { value: '25%', label: 'Route Efficiency Gain' },
-        { value: '1000+', label: 'Simulated Deliveries' },
+        { value: '96%', label: 'Accurate' },
+        { value: '1.5 lakh+', label: 'Data Entries' },
         { value: 'K-Means', label: 'Clustering Model' },
-        { value: 'TSP', label: 'Route Optimization' },
+        { value: 'XGBoost', label: 'Regression' },
         { value: 'Dynamic', label: 'Replanning' }
       ]
     }
@@ -54,11 +61,12 @@ const vaultProjects = [
     themeColor: '#f59e0b', // amber
     liveUrl: '#',
     sourceUrl: 'https://github.com/yosobanta/Real-Time-Multi-threaded-Application-Simulator',
+    video: osVideo,
     sections: {
       context: 'Modern software systems rely heavily on concurrent processing, where multiple threads execute tasks simultaneously. Understanding thread scheduling, synchronization, and resource contention is critical for building high-performance applications.',
       architecture: 'Implemented a multi-threaded simulation framework in C++ using POSIX threads and synchronization primitives. The simulator models concurrent processes executing tasks with shared resources while demonstrating thread scheduling, race conditions, mutex locks, and deadlock prevention mechanisms.',
       specialization: 'The system visualizes thread execution timelines and resource contention scenarios, allowing developers to observe how different synchronization techniques affect throughput and performance in concurrent applications.',
-      stack: ['C++', 'POSIX Threads', 'Mutex', 'Semaphores', 'Linux', 'Concurrency'],
+      stack: ['Python', 'OS', 'Mutex', 'Semaphores', 'Tkinter', 'Concurrency'],
       metrics: [
         { value: '10+', label: 'Concurrent Threads' },
         { value: 'Mutex', label: 'Synchronization' },
@@ -76,6 +84,7 @@ const vaultProjects = [
     themeColor: '#f472b6', // pink
     liveUrl: '#',
     sourceUrl: '#',
+    video: portfolioVideo,
     sections: {
       context: 'Traditional developer portfolios often present projects as static pages, failing to capture the user’s attention or reflect the developer’s creativity. Modern web experiences require immersive interfaces that blend animation, interaction, and storytelling.',
       architecture: 'Built a single-page portfolio using React with Tailwind CSS and motion libraries such as GSAP and Framer Motion. The interface includes a cinematic startup screen with an OS-like boot sequence, interactive cursor trails, scroll-driven animations, and modular sections presenting projects, skills, and experiences.',

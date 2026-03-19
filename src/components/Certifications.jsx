@@ -20,15 +20,7 @@ const certifications = [
     color: '#4285F4'
   },
   {
-    id: 'cert-3',
-    name: 'GPU Computing with CUDA',
-    provider: 'NVIDIA',
-    providerImage: '/subskills/computer_vision2.png',
-    verifyUrl: '#',
-    color: '#76B900'
-  },
-  {
-    id: 'cert-4',
+    id: 'cert-5',
     name: 'Network Communication',
     provider: 'University of Colorado',
     providerImage: '/subskills/cu_logo.png',
@@ -36,7 +28,7 @@ const certifications = [
     color: '#3DDC84'
   },
   {
-    id: 'cert-5',
+    id: 'cert-6',
     name: 'Problem Solving',
     provider: 'CodeChef',
     providerImage: '/subskills/CodeChef_Logo.png',
@@ -44,7 +36,7 @@ const certifications = [
     color: '#FF9900'
   },
   {
-    id: 'cert-6',
+    id: 'cert-7',
     name: 'Cloud Computing',
     provider: 'NPTEL',
     providerImage: '/subskills/nptel_logo.png',
@@ -52,7 +44,7 @@ const certifications = [
     color: '#38bdf8'
   },
   {
-    id: 'cert-7',
+    id: 'cert-8',
     name: 'C++ Learner',
     provider: 'CodeChef',
     providerImage: '/subskills/CodeChef_Logo.png',
@@ -60,7 +52,7 @@ const certifications = [
     color: '#0056D2'
   },
   {
-    id: 'cert-8',
+    id: 'cert-9',
     name: 'Computation Theory',
     provider: 'Infosys',
     providerImage: '/subskills/Infosys_logo.svg.webp',
@@ -68,15 +60,15 @@ const certifications = [
     color: '#00EA64'
   },
   {
-    id: 'cert-9',
+    id: 'cert-10',
     name: 'MERN stack with GenAI',
     provider: 'W3Grads(The Angaar Batch)',
     providerImage: '/subskills/angaari_logo.png',
     verifyUrl: import.meta.env.VITE_CERT_DRIVE_MERN_GENAI,
-    color: '#7F52FF'
+    color: '#d97b23'
   },
   {
-    id: 'cert-10',
+    id: 'cert-11',
     name: 'Responsive Web Design',
     provider: 'FreeCodeCamp',
     providerImage: '/subskills/FreeCodeCamp_logo.png',

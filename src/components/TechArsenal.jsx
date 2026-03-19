@@ -41,7 +41,7 @@ const categories = [
     title: "Backend Core",
     skills: [
       { name: "Node.js", icon: <SiNodedotjs />, color: "#339933" },
-      { name: "Spring", icon: <SiSpring />, color: "#6DB33F" },
+      // { name: "Spring", icon: <SiSpring />, color: "#6DB33F" },
       { name: "Express", icon: <SiNodedotjs />, color: "#eeeeee" },
       { name: "Firebase", icon: <SiFirebase />, color: "#FFCA28" },
       { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
@@ -49,7 +49,7 @@ const categories = [
     ] // 6 icons: Pyramid (1, 2, 3)
   },
   {
-    title: "DevOps & Tools",
+    title: "Platform & Tools",
     skills: [
       { name: "Docker", icon: <SiDocker />, color: "#2496ED" },
       { name: "Render", icon: <SiRender/>, color: "#326ce5" },

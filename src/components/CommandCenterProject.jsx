@@ -1,32 +1,49 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { ExternalLink, Github, Brain, Network, Smartphone, Database, Layers, Cpu, FileCode2, Scan, GitMerge, Globe, Server, Monitor, Cog } from 'lucide-react';
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, Brain, Network, Smartphone, Database, Layers, Cpu, FileCode2, Scan, GitMerge, Globe, Server, Monitor, Cog, Lock, AlignEndVertical, AppWindow } from 'lucide-react';
+import { SiReact, SiTailwindcss, SiNodedotjs, SiExpress, SiMongodb, SiJsonwebtokens, SiPython, SiScikitlearn, SiPandas, SiNumpy, SiJupyter, SiLinux, SiGreensock, SiFramer, SiJavascript, SiVite, SiCplusplus, SiFirebase, SiDocker, SiNextdotjs, SiRedis, SiTensorflow, SiPytorch, SiFastapi, SiGraphql, SiSocketdotio, SiOpencv, SiKotlin, SiKotlin as SiKotlin2 } from 'react-icons/si';
 
-// Map tech names to icons
+// Map tech names to icons and their brand colors
 const techIconMap = {
-  "PyTorch": Brain,
-  "TensorFlow": Brain,
-  "Python": FileCode2,
-  "FastAPI": Server,
-  "YOLOv8": Scan,
-  "React": Layers,
-  "Node.js": Server,
-  "MongoDB": Database,
-  "Next.js": Globe,
-  "Docker": Cpu,
-  "Redis": Database,
-  "D3.js": Network,
-  "Tailwind": FileCode2,
-  "Framer Motion": Cog,
-  "Kotlin": Smartphone,
-  "Firebase": Database,
-  "C++": FileCode2,
-  "OpenCV": Scan,
-  "Scikit-learn": Brain,
-  "Express": Server,
-  "GraphQL": Network,
-  "Socket.io": Globe,
-  "Linux": Monitor,
+  "React": { icon: SiReact, color: "#61DAFB" },
+  "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
+  "Node.js": { icon: SiNodedotjs, color: "#339933" },
+  "Express.js": { icon: SiExpress, color: "#FFFFFF" },
+  "Express": { icon: SiExpress, color: "#FFFFFF" },
+  "MongoDB": { icon: SiMongodb, color: "#47A248" },
+  "JWT": { icon: SiJsonwebtokens, color: "#FFFFFF" },
+  "REST APIs": { icon: Network, color: "#A3A3A3" },
+  "Python": { icon: SiPython, color: "#3776AB" },
+  "Scikit-learn": { icon: SiScikitlearn, color: "#F7931E" },
+  "Pandas": { icon: SiPandas, color: "#E8EAF6" },
+  "NumPy": { icon: SiNumpy, color: "#4D77CF" },
+  "Matplotlib": { icon: FileCode2, color: "#11557C" },
+  "Jupyter Notebook": { icon: SiJupyter, color: "#F37626" },
+  "OS": { icon: Monitor, color: "#A3A3A3" },
+  "Mutex": { icon: Lock, color: "#A3A3A3" },
+  "Semaphores": { icon: AlignEndVertical, color: "#A3A3A3" },
+  "Tkinter": { icon: AppWindow, color: "#A3A3A3" },
+  "Concurrency": { icon: Network, color: "#A3A3A3" },
+  "GSAP": { icon: SiGreensock, color: "#88CE02" },
+  "Framer Motion": { icon: SiFramer, color: "#0055FF" },
+  "JavaScript": { icon: SiJavascript, color: "#F7DF1E" },
+  "Vite": { icon: SiVite, color: "#646CFF" },
+  "C++": { icon: SiCplusplus, color: "#00599C" },
+  "PyTorch": { icon: SiPytorch, color: "#EE4C2C" },
+  "TensorFlow": { icon: SiTensorflow, color: "#FF6F00" },
+  "FastAPI": { icon: SiFastapi, color: "#009688" },
+  "YOLOv8": { icon: Scan, color: "#00FFFF" },
+  "Next.js": { icon: SiNextdotjs, color: "#FFFFFF" },
+  "Docker": { icon: SiDocker, color: "#2496ED" },
+  "Redis": { icon: SiRedis, color: "#DC382D" },
+  "D3.js": { icon: Network, color: "#F9A03C" },
+  "Tailwind": { icon: SiTailwindcss, color: "#06B6D4" },
+  "Kotlin": { icon: SiKotlin, color: "#7F52FF" },
+  "Firebase": { icon: SiFirebase, color: "#FFCA28" },
+  "OpenCV": { icon: SiOpencv, color: "#5C3EE8" },
+  "GraphQL": { icon: SiGraphql, color: "#E10098" },
+  "Socket.io": { icon: SiSocketdotio, color: "#FFFFFF" },
+  "Linux": { icon: SiLinux, color: "#FCC624" },
 };
 
 const sectionKeys = ['context', 'architecture', 'specialization', 'stack', 'metrics'];
@@ -60,6 +77,319 @@ const pulseVariants = {
   }
 };
 
+function ContextSection({ project, themeColor }) {
+  const [showVideo, setShowVideo] = useState(!!project.video);
+  const videoRef = useRef(null);
+
+  if (!project.video) {
+    return <p className="text-mercury-300 text-sm leading-snug font-light">{project.sections.context}</p>;
+  }
+
+  return (
+    <div className="relative w-full">
+      <AnimatePresence mode="wait">
+        {showVideo ? (
+          <motion.div
+            key="video-view"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.8 }}
+            className="w-full rounded-xl overflow-hidden border border-mercury-800/40 bg-black"
+          >
+            <motion.video
+              ref={videoRef}
+              src={project.video}
+              autoPlay
+              muted
+              playsInline
+              onEnded={() => setShowVideo(false)}
+              className="w-full h-auto object-cover"
+              style={{ maxHeight: '400px' }}
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.05 }}
+              transition={{ duration: 8, ease: "linear" }}
+            />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="text-view"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.8 }}
+            className="w-full flex flex-col"
+          >
+            <p className="text-mercury-300 text-sm leading-snug font-light">
+              {project.sections.context}
+            </p>
+            <div className="flex justify-end mt-6">
+              <motion.button
+                onClick={() => setShowVideo(true)}
+                whileHover={{ scale: 1.05, boxShadow: `0 0 15px ${themeColor}40`, color: '#fff' }}
+                whileTap={{ scale: 0.95 }}
+                className="text-[10px] uppercase font-mono tracking-widest px-4 py-2 rounded-lg border border-mercury-800/50 hover:border-mercury-600 transition-all flex items-center gap-2 bg-mercury-900/40"
+                style={{ color: themeColor }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 2v6h-6"/><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                </svg>
+                Replay Demo
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+const highlightText = (text, themeColor) => {
+  if (typeof text !== 'string') return text;
+  
+  const keywords = ['role-based auth', 'OTP', 'AI insights', 'clustering algorithms', 'heuristic optimization', 'POSIX threads', 'synchronization primitives', 'motion libraries', 'scroll-driven animations', 'real time', 'real-time', 'MERN stack', 'machine learning', 'JWT'];
+  const regex = new RegExp(`(${keywords.map(k => k.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&')).join('|')})`, 'gi');
+  
+  const parts = text.split(regex);
+  return parts.map((part, i) => {
+    if (keywords.some(k => k.toLowerCase() === part.toLowerCase())) {
+      return (
+        <span 
+          key={i}
+          className="font-mono text-[10px] sm:text-[11px] px-1 py-0.5 mx-0.5 rounded transition-all duration-300 inline-block align-baseline"
+          style={{ 
+            color: themeColor, 
+            backgroundColor: `${themeColor}15`, 
+            border: `1px solid ${themeColor}40` 
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = `0 0 10px ${themeColor}60`;
+            e.currentTarget.style.backgroundColor = `${themeColor}25`;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = 'none';
+            e.currentTarget.style.backgroundColor = `${themeColor}15`;
+          }}
+        >
+          {part}
+        </span>
+      );
+    }
+    return part;
+  });
+};
+
+function ArchitectureSection({ project, themeColor }) {
+  const titleUpper = project.title.toUpperCase();
+  let nodes = [];
+
+  if (titleUpper.includes("LAST-MILE")) {
+    nodes = [
+      { id: 'ord', label: 'Orders', tooltip: 'Incoming delivery requests' },
+      { id: 'clus', label: 'Clustering', tooltip: 'K-Means grouping' },
+      { id: 'opt', label: 'Route Optimization', tooltip: 'TSP algorithms' },
+      { id: 'eta', label: 'ETA Prediction', tooltip: 'Traffic & time variables' },
+      { id: 'disp', label: 'Dispatch', tooltip: 'Agent assignment' },
+    ];
+  } else if (titleUpper.includes("MULTI-THREADED")) {
+    nodes = [
+      { id: 'task', label: 'Task Queue', tooltip: 'Incoming processes' },
+      { id: 'sched', label: 'Scheduler', tooltip: 'Thread assignment' },
+      { id: 'exec', label: 'Execution', tooltip: 'Parallel processing' },
+      { id: 'sync', label: 'Sync / Mutex', tooltip: 'Resource locking' },
+      { id: 'done', label: 'Completion', tooltip: 'Thread joined' },
+    ];
+  } else {
+    // Default / Web App flow
+    nodes = [
+      { id: 'user', label: 'User', tooltip: 'Client requests' },
+      { id: 'front', label: 'Frontend', tooltip: 'React UI' },
+      { id: 'api', label: 'API', tooltip: 'Routing & Security' },
+      { id: 'db', label: 'Database', tooltip: 'Storage' },
+      { id: 'ai', label: 'AI Engine', tooltip: 'Calculations' },
+    ];
+  }
+
+  return (
+    <div className="w-full flex flex-col gap-6">
+      <div className="w-full py-6 md:py-8 flex flex-wrap items-center justify-center gap-2 sm:gap-4 border border-mercury-800/30 rounded-xl bg-mercury-900/10 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at center, rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
+        
+        {nodes.map((n, i) => (
+          <React.Fragment key={n.id}>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 10 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: i * 0.15, duration: 0.5, type: "spring" }}
+              className="relative group cursor-default z-10"
+            >
+              <div
+                className="px-3 py-2 sm:px-4 sm:py-3 rounded-lg border border-mercury-800/60 bg-mercury-900/40 backdrop-blur-md flex items-center justify-center text-[10px] sm:text-xs font-mono text-mercury-300 transition-all duration-300 group-hover:bg-mercury-800/60 group-hover:-translate-y-1"
+                style={{ '--tw-shadow-color': `${themeColor}00` }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = `0 4px 20px ${themeColor}40`;
+                  e.currentTarget.style.borderColor = `${themeColor}80`;
+                  e.currentTarget.style.color = '#fff';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = 'none';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                  e.currentTarget.style.color = 'rgb(163, 163, 163)';
+                }}
+              >
+                {n.label}
+              </div>
+              <div className="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none bg-mercury-900 border border-mercury-700 px-2 py-1 rounded text-[9px] w-max z-20 text-mercury-200 shadow-xl translate-y-2 group-hover:translate-y-0">
+                {n.tooltip}
+              </div>
+            </motion.div>
+            
+            {i < nodes.length - 1 && (
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: i * 0.15 + 0.1, duration: 0.4 }}
+                className="text-mercury-700 hidden sm:block z-10"
+              >
+                <svg width="24" height="12" viewBox="0 0 24 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <motion.path 
+                    d="M0 6H22M22 6L16 1M22 6L16 11" 
+                    stroke="currentColor" 
+                    strokeWidth="1.2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                    initial={{ pathLength: 0, opacity: 0 }}
+                    animate={{ pathLength: 1, opacity: [0.2, 1, 0.2] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: i * 0.2 }}
+                  />
+                </svg>
+              </motion.div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
+
+      <p className="text-mercury-400 text-sm leading-relaxed font-light opacity-80 transition-opacity hover:opacity-100">
+        {highlightText(project.sections.architecture, themeColor)}
+      </p>
+    </div>
+  );
+}
+
+function SpecializationSection({ project, themeColor }) {
+  const titleUpper = project.title.toUpperCase();
+  let features = [];
+  
+  if (titleUpper.includes("MEDIVAULT")) {
+    features = [
+      { id: 'otp', title: 'OTP Sharing', desc: 'Time-limited access blocks for documents.', isInteractive: true },
+      { id: 'ai', title: 'AI Health Score', desc: 'Predictive modeling on medical context.' },
+      { id: 'sec', title: 'Secure Access', desc: 'Role-based hierarchical viewing.' },
+      { id: 'vis', title: 'Insights Visualization', desc: 'Chart-based trend tracking.' }
+    ];
+  } else if (titleUpper.includes("LAST-MILE")) {
+    features = [
+      { id: 'opt', title: 'Dynamic Planners', desc: 'Recalculating mid-delivery routes.', isInteractive: true },
+      { id: 'clust', title: 'K-Means Clusters', desc: 'Geographic order batching.' },
+      { id: 'heur', title: 'TSP Heuristics', desc: 'Minimizing travel graphs.' },
+      { id: 'sim', title: 'Live Simulation', desc: 'Real-time traffic adaptation.' }
+    ];
+  } else if (titleUpper.includes("MULTI-THREADED")) {
+    features = [
+      { id: 'sched', title: 'Thread Scheduler', desc: 'Visual timeline of thread lifecycles.', isInteractive: true },
+      { id: 'race', title: 'Contention', desc: 'Simulated race conditions.' },
+      { id: 'lock', title: 'Mutex Locks', desc: 'Real-time state tracking of semaphores.' },
+      { id: 'dead', title: 'Deadlock Checks', desc: 'Circular wait prevention.' }
+    ];
+  } else {
+    features = [
+      { id: 'boot', title: 'Boot Sequence', desc: 'OS-style cinematic startup.', isInteractive: true },
+      { id: 'scroll', title: 'Motion Scroll', desc: 'Weighted momentum on scroll events.' },
+      { id: 'ui', title: 'Modular UI', desc: 'Lightweight component system.' },
+      { id: 'load', title: 'Dynamic Loading', desc: 'Seamless SPA transitions.' }
+    ];
+  }
+
+  const [interactiveState, setInteractiveState] = useState({});
+
+  const handleInteractiveClick = (id) => {
+    if (interactiveState[id]) return;
+    setInteractiveState(prev => ({ ...prev, [id]: 1 }));
+    setTimeout(() => {
+      setInteractiveState(prev => ({ ...prev, [id]: 2 }));
+      setTimeout(() => setInteractiveState(prev => ({ ...prev, [id]: 0 })), 4000);
+    }, 600);
+  };
+
+  return (
+    <div className="w-full flex flex-col gap-6">
+      <p className="text-mercury-400 text-sm leading-relaxed font-light opacity-80 hover:opacity-100 transition-opacity">
+        {project.sections.specialization}
+      </p>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+        {features.map((feat, i) => (
+          <motion.div
+            key={feat.id}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ delay: i * 0.1 + 0.1, duration: 0.5 }}
+            whileHover={{ scale: 1.02, y: -2, boxShadow: `0 8px 24px -10px ${themeColor}50` }}
+            className="p-4 rounded-xl border border-mercury-800/40 bg-mercury-900/20 backdrop-blur-sm flex flex-col gap-2 relative overflow-hidden group transition-all duration-300 min-h-[90px]"
+          >
+            <div className="absolute top-0 left-0 w-1 h-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ backgroundColor: themeColor }} />
+            
+            <h6 className="text-[11px] font-mono text-mercury-200 uppercase tracking-widest">{feat.title}</h6>
+            <div className="h-0 group-hover:h-auto overflow-hidden opacity-0 group-hover:opacity-100 transition-all duration-500">
+               <p className="text-xs text-mercury-500 font-light mt-1">
+                 {feat.desc}
+               </p>
+            </div>
+
+            {feat.isInteractive && (
+              <div className="mt-2 pt-2 border-t border-mercury-800/30">
+                {!interactiveState[feat.id] && (
+                  <button 
+                    onClick={() => handleInteractiveClick(feat.id)}
+                    className="text-[9px] uppercase tracking-widest px-3 py-1.5 mt-1 rounded border border-mercury-700/50 text-mercury-400 hover:text-white hover:border-mercury-500 transition-colors bg-mercury-900/40"
+                  >
+                    {titleUpper.includes("MEDIVAULT") ? "Generate Access" : "Execute Module"}
+                  </button>
+                )}
+                {interactiveState[feat.id] === 1 && (
+                  <motion.div 
+                    initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                    className="text-[9px] uppercase font-mono text-amber-500 mt-1 py-1.5 flex items-center gap-2"
+                  >
+                    <Cog size={12} className="animate-spin" /> Processing...
+                  </motion.div>
+                )}
+                {interactiveState[feat.id] === 2 && (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="text-[10px] font-mono mt-1 py-1 px-2.5 rounded border inline-flex items-center gap-2 animate-pulse"
+                    style={{ backgroundColor: `${themeColor}15`, borderColor: `${themeColor}40`, color: themeColor, textShadow: `0 0 8px ${themeColor}80` }}
+                  >
+                    {titleUpper.includes("MEDIVAULT") ? (
+                      `OTP: ${Math.floor(100000 + Math.random() * 900000)}`
+                    ) : (
+                      "OK: ACTIVE"
+                    )}
+                  </motion.div>
+                )}
+              </div>
+            )}
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function CommandCenterProject({ project, index }) {
   const containerRef = useRef(null);
   const sectionRefs = useRef({});
@@ -68,7 +398,7 @@ export default function CommandCenterProject({ project, index }) {
   // Scroll progress for this project block
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start start", "end end"]
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -227,54 +557,45 @@ export default function CommandCenterProject({ project, index }) {
 
           {/* ── CONTEXT (Problem) ── */}
           <div ref={(el) => (sectionRefs.current.context = el)} className="scroll-mt-24">
-            <div className="glass-panel rounded-2xl p-8 md:p-10 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
+            <div className="glass-panel rounded-2xl p-6 md:p-8 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
               <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-6" style={{ color: themeColor }}>
                 Context — The Problem
               </h5>
-              <p className="text-mercury-300 text-lg leading-relaxed font-light">
-                {project.sections.context}
-              </p>
+              <ContextSection project={project} themeColor={themeColor} />
             </div>
           </div>
 
           {/* ── ARCHITECTURE (Solution) ── */}
           <div ref={(el) => (sectionRefs.current.architecture = el)} className="scroll-mt-24">
-            <div className="glass-panel rounded-2xl p-8 md:p-10 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
-              <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-2" style={{ color: themeColor }}>
+            <div className="glass-panel rounded-2xl p-6 md:p-8 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
+              <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-6" style={{ color: themeColor }}>
                 Architecture — The Solution
               </h5>
-              {project.projectCategory && (
-                <span className="inline-block text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded border border-mercury-700/50 text-mercury-500 mb-6">
-                  {project.projectCategory}
-                </span>
-              )}
-              <p className="text-mercury-300 text-lg leading-relaxed font-light">
-                {project.sections.architecture}
-              </p>
+              <ArchitectureSection project={project} themeColor={themeColor} />
             </div>
           </div>
 
           {/* ── SPECIALIZATION (Uniqueness) ── */}
           <div ref={(el) => (sectionRefs.current.specialization = el)} className="scroll-mt-24">
-            <div className="glass-panel rounded-2xl p-8 md:p-10 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
+            <div className="glass-panel rounded-2xl p-6 md:p-8 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
               <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-6" style={{ color: themeColor }}>
                 Specialization — What Makes It Unique
               </h5>
-              <p className="text-mercury-300 text-lg leading-relaxed font-light">
-                {project.sections.specialization}
-              </p>
+              <SpecializationSection project={project} themeColor={themeColor} />
             </div>
           </div>
 
           {/* ── STACK (Technologies) ── */}
           <div ref={(el) => (sectionRefs.current.stack = el)} className="scroll-mt-24">
-            <div className="glass-panel rounded-2xl p-8 md:p-10 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
-              <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-8" style={{ color: themeColor }}>
+            <div className="glass-panel rounded-2xl p-6 md:p-8 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
+              <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-6" style={{ color: themeColor }}>
                 Stack — Technologies
               </h5>
               <div className="flex flex-wrap gap-6">
                 {project.sections.stack.map((tech, i) => {
-                  const IconComponent = techIconMap[tech] || Cpu;
+                  const techData = techIconMap[tech] || { icon: Cpu, color: '#A3A3A3' };
+                  const IconComponent = techData.icon;
+                  const iconColor = techData.color;
                   return (
                     <motion.div
                       key={i}
@@ -282,14 +603,23 @@ export default function CommandCenterProject({ project, index }) {
                       className="flex flex-col items-center gap-2 group cursor-default"
                     >
                       <div
-                        className="p-4 rounded-xl border border-mercury-700/50 bg-mercury-900/40 backdrop-blur-sm group-hover:border-mercury-400/60 transition-all duration-300"
+                        className="w-16 h-16 rounded-full border border-mercury-700/50 flex items-center justify-center bg-mercury-900/40 backdrop-blur-sm group-hover:border-mercury-400/60 transition-all duration-300 relative overflow-hidden"
                         style={{ boxShadow: `0 0 0px transparent` }}
-                        onMouseEnter={(e) => { e.currentTarget.style.boxShadow = `0 0 20px ${themeColor}40`; }}
-                        onMouseLeave={(e) => { e.currentTarget.style.boxShadow = `0 0 0px transparent`; }}
+                        onMouseEnter={(e) => { 
+                          e.currentTarget.style.boxShadow = `0 0 20px ${iconColor}40`;
+                          e.currentTarget.style.borderColor = `${iconColor}80`;
+                        }}
+                        onMouseLeave={(e) => { 
+                          e.currentTarget.style.boxShadow = `0 0 0px transparent`;
+                          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)';
+                        }}
                       >
-                        <IconComponent size={32} className="text-mercury-300 group-hover:text-mercury-100 transition-colors" />
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300" style={{ backgroundColor: iconColor }} />
+                        <IconComponent size={28} color={iconColor} className="transition-transform group-hover:scale-110 duration-300 z-10" />
                       </div>
-                      <span className="text-[11px] font-mono text-mercury-500 group-hover:text-mercury-300 transition-colors tracking-wider">
+                      <span 
+                        className="text-[11px] font-mono text-mercury-500 group-hover:text-mercury-200 transition-colors tracking-wider flex items-center gap-1.5"
+                      >
                         {tech}
                       </span>
                     </motion.div>
@@ -301,8 +631,8 @@ export default function CommandCenterProject({ project, index }) {
 
           {/* ── METRICS (Impact/Results) ── */}
           <div ref={(el) => (sectionRefs.current.metrics = el)} className="scroll-mt-24">
-            <div className="glass-panel rounded-2xl p-8 md:p-10 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
-              <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-8" style={{ color: themeColor }}>
+            <div className="glass-panel rounded-2xl p-6 md:p-8 border border-mercury-800/40 hover:border-mercury-600/40 transition-colors duration-500">
+              <h5 className="text-xs font-mono uppercase tracking-[0.3em] mb-6" style={{ color: themeColor }}>
                 Metrics — Impact & Results
               </h5>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">

@@ -108,10 +108,28 @@ export default function HeroSection({ onShatter }) {
               style={{ translateZ: "50px" }}
               className="absolute inset-4 rounded-xl border border-mercury-500/30 flex items-center justify-center bg-black/40 backdrop-blur-sm"
             >
-              {/* Fallback avatar content / icon */}
-              <div className="text-4xl text-mercury-500 font-mono tracking-widest opacity-50 group-hover:opacity-100 transition-opacity">
-                Y.M.
-              </div>
+              {/* Glassmorphic Avatar Icon */}
+              <motion.div 
+                className="w-full h-full flex items-end justify-center relative overflow-hidden rounded-xl"
+                initial={{ opacity: 0.35, scale: 1 }}
+                whileHover={{ opacity: 0.55, scale: 1.03 }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              >
+                {/* Soft ambient backlight behind avatar */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-mercury-200/10 rounded-full blur-2xl group-hover:bg-mercury-200/20 transition-all duration-700" />
+                
+                <svg viewBox="0 0 24 24" className="w-[65%] h-[65%] mb-[-5%] overflow-visible relative z-10" style={{ filter: 'drop-shadow(0 -4px 12px rgba(255,255,255,0.05)) blur(0.3px)' }}>
+                  <defs>
+                    <linearGradient id="avatarGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                      <stop offset="30%" stopColor="#e5e7eb" stopOpacity="0.5" />
+                      <stop offset="100%" stopColor="#9ca3af" stopOpacity="0.05" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="12" cy="8" r="4.8" fill="url(#avatarGlass)" />
+                  <path d="M4.5 24C4.5 18 7.5 14.5 12 14.5C16.5 14.5 19.5 18 19.5 24" fill="url(#avatarGlass)" />
+                </svg>
+              </motion.div>
             </motion.div>
             {/* Shine effect */}
             <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

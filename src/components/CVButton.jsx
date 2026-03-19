@@ -20,7 +20,7 @@ export default function CVButton({ resumeUrl }) {
     >
       {/* Label */}
       <span className="text-mercury-100 font-medium tracking-wide uppercase text-sm mr-4">
-        CV
+        Resume
       </span>
 
       {/* Action Drops */}
