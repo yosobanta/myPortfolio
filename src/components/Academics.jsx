@@ -10,9 +10,11 @@ const academicEntries = [
     years: '2023 — Present',
     degree: 'B.Tech Computer Science & Engineering',
     institution: 'Lovely Profressional University',
-    grade: 'CGPA: 8.18 / 10.0',
+    grade: 'CGPA: 8.2 / 10.0',
     status: 'ACTIVE',
     subjects: [
+      'Machine Learning',
+      'Android development',
       'Data Structures & Algorithms',
       'Machine Learning',
       'Operating Systems',
@@ -37,7 +39,7 @@ const academicEntries = [
     institution: 'Ramakrishna Mission Vidyapith,Purulia',
     grade: 'Percentage: 94.5%',
     status: 'COMPLETED',
-    subjects: ['Mathematics', 'Science', 'Social Studies', 'English', 'Bengali'],
+    subjects: ['Mathematics', 'Science', 'Geography','History', 'English', 'Bengali'],
   },
 ];
 
@@ -48,7 +50,7 @@ const trainingEntries = [
     title: 'MERN Stack with GenAI',
     organization: 'The Angaar Batch',
     orgLink: 'https://theangaarbatch.in',
-    duration: '6-7 Weeks',
+    duration: '7 Weeks',
     status: 'COMPLETED',
     certificateUrl: import.meta.env.VITE_CERT_DRIVE_MERN_GENAI,
     highlights: [
