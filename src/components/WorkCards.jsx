@@ -19,7 +19,7 @@ const projects = [
     role: 'Mobile Developer',
     categoryType: 'ANDROID',
     bgImage: '/bg_android.png',
-    subSkills: ["Jetpack Compose", "XML Layouts", "Retrofit", "Room DB"]
+    subSkills: ["Jetpack Compose", "XML Layouts", "Retrofit", "Kotlin"]
   },
   {
     title: 'Full-Stack Web Development',
@@ -337,7 +337,7 @@ const SkillLoop = ({ skills, categoryType, bgImage }) => {
                     "Jetpack Compose": "/subskills/jetpack_compose.png",
                     "XML Layouts": "/subskills/androidstudio.png",
                     "Retrofit": "/subskills/android.png",
-                    "Room DB": "/subskills/kotlin.png",
+                    "Kotlin": "/subskills/kotlin.png",
                     "MERN Stack": "/subskills/MERN.png",
                     "Database Architecture": "/subskills/database.png",
                     "API Design": "/subskills/postman.png"

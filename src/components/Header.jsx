@@ -3,8 +3,8 @@ import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-
 
 const NAV_ITEMS = [
   { id: 'home', label: 'HOME' },
-  { id: 'projects', label: 'PROJECTS' },
-  { id: 'area-of-work', label: 'AREA OF WORK' },
+  { id: 'projects', label: 'WORK AREA' },
+  { id: 'area-of-work', label: 'PROJECTS' },
 ];
 
 const Header = () => {

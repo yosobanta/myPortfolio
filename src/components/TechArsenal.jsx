@@ -8,7 +8,7 @@ import {
   SiJavascript, SiTypescript, SiGo, SiRender, SiSpring, SiPostgresql, SiRedis, SiMui, SiGraphql,
   SiFigma, SiGithub, SiLinux, SiGit
 } from "react-icons/si";
-import { FaJava, FaAws , FaAndroid ,FaHtml5 }  from "react-icons/fa";
+import { FaJava, FaAws, FaHtml5 } from "react-icons/fa";
 
 import { IoLogoVercel } from "react-icons/io5";
 
@@ -54,10 +54,9 @@ const categories = [
       { name: "Docker", icon: <SiDocker />, color: "#2496ED" },
       { name: "Render", icon: <SiRender/>, color: "#326ce5" },
       { name: "Vercel", icon: <IoLogoVercel />, color: "#FF9900" },
-      { name: "Android", icon: <FaAndroid/>, color: "#44dc2d" },
       { name: "Git", icon: <SiGit />, color: "#F05032" },
       { name: "GitHub", icon: <SiGithub />, color: "#ffffff" }
-    ] // 6 icons: Pyramid (1, 2, 3)
+    ] // 5 icons
   }
 ];
 
@@ -156,21 +155,15 @@ const AdaptiveLayout = ({ skills }) => {
 const CategoryCard = ({ category, isCenter }) => {
   return (
     <div
-      className="w-[340px] md:w-[380px] lg:w-[400px] h-[280px] md:h-[300px] rounded-[32px] pt-6 px-4 pb-4 relative flex flex-col items-center flex-shrink-0 mx-auto transition-shadow duration-700"
+      className="w-[340px] md:w-[380px] lg:w-[400px] h-auto md:h-auto rounded-2xl p-6 relative flex flex-col items-center flex-shrink-0 mx-auto transition-all duration-700 bg-mercury-950/40 border border-mercury-800/40 backdrop-blur-sm"
       style={{
-        backgroundColor: "rgba(255, 255, 255, 0.05)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        // Responsive backlight dynamic to the card's active state
-        boxShadow: isCenter ? "25px 25px 40px rgba(0,0,0,0.4), inset 1px 1px 2px rgba(255,255,255,0.2)" : "10px 10px 20px rgba(0,0,0,0.2), inset 1px 1px 2px rgba(255,255,255,0.05)",
-        backdropFilter: "blur(16px)"
+        boxShadow: isCenter ? "0 20px 40px rgba(0,0,0,0.5)" : "0 10px 20px rgba(0,0,0,0.3)"
       }}
     >
-      <h4 className="text-xl md:text-2xl font-extrabold tracking-[0.2em] text-mercury-200 text-center uppercase drop-shadow-lg flex-shrink-0">
+      <h4 className="text-lg md:text-xl font-bold tracking-wide text-mercury-200 text-center uppercase mb-4">
         {category.title}
       </h4>
-      <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-mercury-600 to-transparent my-4 opacity-50 flex-shrink-0" />
-      <div className="flex-1 w-full flex items-center justify-center overflow-visible">
-        {/* Pass array payload sequentially downward */}
+      <div className="w-full flex items-center justify-center">
         <AdaptiveLayout skills={category.skills} />
       </div>
     </div>
@@ -203,7 +196,7 @@ export default function TechArsenal() {
       </div>
 
       {/* Stage Geometry explicitly setting massive 1200px perspective */}
-      <div className="relative w-full h-[400px] md:h-[450px] flex items-center justify-center transform-gpu mt-8" style={{ perspective: "1200px" }}>
+      <div className="relative w-full min-h-[450px] flex items-center justify-center transform-gpu mt-8" style={{ perspective: "1200px" }}>
 
         {/* Arrow Navigation */}
         <div className="absolute inset-y-0 left-2 right-2 md:left-8 md:right-8 flex items-center justify-between z-40 pointer-events-none">

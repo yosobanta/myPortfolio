@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
-import { Film, Compass, Trophy, X, Play, Pause, SkipForward, SkipBack, Music, User } from 'lucide-react';
+import { Film, Trophy, X, Play, Pause, SkipForward, SkipBack, Music, User } from 'lucide-react';
 import QuoteCarousel from './QuoteCarousel';
 
 // ═══════════════════════════════════════════
@@ -37,13 +37,7 @@ const footballHighlights = [
   { title: '91 Goals in 2012', desc: 'The record-breaking calendar year.' },
 ];
 
-const travelLog = [
-  { city: 'Tokyo', coords: '35.6762° N, 139.6503° E', image: '/subskills/MERN.png', date: '2024-11-15' },
-  { city: 'Paris', coords: '48.8566° N, 2.3522° E', image: '/subskills/database.png', date: '2024-08-22' },
-  { city: 'New York', coords: '40.7128° N, 74.0060° W', image: '/subskills/postman.png', date: '2024-06-10' },
-  { city: 'Bali', coords: '8.3405° S, 115.0920° E', image: '/subskills/jetpack_compose.png', date: '2023-12-28' },
-  { city: 'Dubai', coords: '25.2048° N, 55.2708° E', image: '/subskills/kotlin.png', date: '2023-09-05' },
-];
+
 
 const playlist = [
   { title: 'Midnight Algorithm', artist: 'Synthwave Protocol', duration: '3:42', album: 'Digital Echoes' },
@@ -57,7 +51,6 @@ const hobbies = [
   { id: 'mecard', label: 'Profile', icon: User, color: '#00FFFF' },
   { id: 'movies', label: 'Cinema', icon: Film, color: '#e879f9' },
   { id: 'football', label: 'Football', icon: Trophy, color: '#fbbf24' },
-  { id: 'travel', label: 'Travel', icon: Compass, color: '#38bdf8' },
 ];
 
 // ═══════════════════════════════════════════
@@ -123,34 +116,9 @@ const FootballModal = () => (
   </div>
 );
 
-const TravelModal = () => (
-  <div className="relative pl-6 border-l-2 border-cyan-500/30 max-h-[60vh] overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-    {travelLog.map((loc, i) => (
-      <motion.div
-        key={loc.city}
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: i * 0.08 }}
-        className="relative mb-6 last:mb-0"
-      >
-        <div className="absolute -left-[29px] top-2 w-3 h-3 rounded-full bg-cyan-500 border-3 border-dark-bg shadow-[0_0_8px_rgba(56,189,248,0.5)]" />
-        <div className="glass-panel rounded-lg overflow-hidden border border-mercury-800/40">
-          <div className="w-full h-[100px] relative overflow-hidden">
-            <div className="absolute inset-0 bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${loc.image})` }} />
-            <div className="absolute inset-0 bg-black/30" />
-          </div>
-          <div className="p-3">
-            <p className="text-sm font-bold text-mercury-100">{loc.city}</p>
-            <p className="text-[10px] font-mono text-cyan-400 tracking-wider">{loc.coords}</p>
-            <p className="text-[9px] font-mono text-mercury-600">LOG: {loc.date}</p>
-          </div>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-);
 
-const modalMap = { movies: MoviesModal, football: FootballModal, travel: TravelModal };
+
+const modalMap = { movies: MoviesModal, football: FootballModal};
 
 // ═══════════════════════════════════════════
 // MODULE A: ARCHIVE FOLDER
@@ -163,7 +131,7 @@ const ArchiveFolder = ({ onOpen }) => (
       <p className="text-sm font-bold text-mercury-200 mt-1">Off-Duty Archive</p>
     </div>
     <div className="flex-1 flex items-center justify-center p-4">
-      <div className="grid grid-cols-4 gap-3 w-full max-w-md mx-auto">
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md mx-auto">
         {hobbies.map((h, i) => {
           const Icon = h.icon;
           return (
@@ -176,7 +144,7 @@ const ArchiveFolder = ({ onOpen }) => (
                 transition: { duration: 3 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.2 }
               }}
               onClick={() => onOpen(h.id)}
-              className="flex flex-col items-center gap-2 p-3 rounded-xl border border-mercury-800/40 bg-mercury-900/20 hover:border-mercury-600/50 hover:bg-mercury-900/40 transition-all group cursor-pointer"
+              className="flex flex-col items-center gap-2 p-3 rounded-lg border border-mercury-800/40 bg-mercury-900/20 hover:border-mercury-600/50 hover:bg-mercury-900/40 transition-all group cursor-pointer"
             >
               <Icon size={24} className="text-mercury-400 group-hover:text-mercury-100 transition-colors" />
               <span className="text-[10px] font-mono text-mercury-600 group-hover:text-mercury-400 transition-colors tracking-widest">{h.label}</span>

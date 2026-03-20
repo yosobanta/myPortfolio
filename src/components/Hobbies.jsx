@@ -44,7 +44,7 @@ const footballHighlights = [
 const hobbies = [
   { id: 'movies', label: 'Cinema', icon: Film, color: '#e879f9' },
   { id: 'football', label: 'Football', icon: Trophy, color: '#fbbf24' },
-  { id: 'travel', label: 'Travel', icon: Compass, color: '#38bdf8' },
+  // { id: 'travel', label: 'Travel', icon: Compass, color: '#38bdf8' },
 ];
 
 // ── CARD SHUFFLE ENTRANCE ──
@@ -133,41 +133,41 @@ const FootballContent = () => (
 );
 
 // ── TRAVEL CONTENT ──
-const TravelContent = () => (
-  <div className="relative pl-8 border-l-2 border-cyan-500/30">
-    {travelLog.map((loc, i) => (
-      <motion.div
-        key={loc.city}
-        custom={i}
-        variants={shuffleVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative mb-10 last:mb-0"
-      >
-        {/* GPS Node */}
-        <div className="absolute -left-[41px] top-2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-dark-bg shadow-[0_0_10px_rgba(56,189,248,0.5)]" />
+// const TravelContent = () => (
+//   <div className="relative pl-8 border-l-2 border-cyan-500/30">
+//     {travelLog.map((loc, i) => (
+//       <motion.div
+//         key={loc.city}
+//         custom={i}
+//         variants={shuffleVariants}
+//         initial="hidden"
+//         animate="visible"
+//         className="relative mb-10 last:mb-0"
+//       >
+//         {/* GPS Node */}
+//         <div className="absolute -left-[41px] top-2 w-4 h-4 rounded-full bg-cyan-500 border-4 border-dark-bg shadow-[0_0_10px_rgba(56,189,248,0.5)]" />
 
-        <div className="glass-panel rounded-xl overflow-hidden border border-mercury-800/40 hover:border-cyan-500/30 transition-colors">
-          <div className="w-full h-[160px] relative overflow-hidden">
-            <div className="absolute inset-0 bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${loc.image})` }} />
-            <div className="absolute inset-0 bg-black/30" />
-          </div>
-          <div className="p-4">
-            <p className="text-lg font-bold text-mercury-100">{loc.city}</p>
-            <p className="text-[11px] font-mono text-cyan-400 tracking-wider mt-1">{loc.coords}</p>
-            <p className="text-[10px] font-mono text-mercury-600 mt-1">LOG: {loc.date}</p>
-          </div>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-);
+//         <div className="glass-panel rounded-xl overflow-hidden border border-mercury-800/40 hover:border-cyan-500/30 transition-colors">
+//           <div className="w-full h-[160px] relative overflow-hidden">
+//             <div className="absolute inset-0 bg-contain bg-no-repeat bg-center" style={{ backgroundImage: `url(${loc.image})` }} />
+//             <div className="absolute inset-0 bg-black/30" />
+//           </div>
+//           <div className="p-4">
+//             <p className="text-lg font-bold text-mercury-100">{loc.city}</p>
+//             <p className="text-[11px] font-mono text-cyan-400 tracking-wider mt-1">{loc.coords}</p>
+//             <p className="text-[10px] font-mono text-mercury-600 mt-1">LOG: {loc.date}</p>
+//           </div>
+//         </div>
+//       </motion.div>
+//     ))}
+//   </div>
+// );
 
 // ── CONTENT MAP ──
 const contentMap = {
   movies: MoviesContent,
   football: FootballContent,
-  travel: TravelContent,
+  
 };
 
 // ── MAIN COMPONENT ──
